@@ -9,24 +9,23 @@ api = tweepy.Client(
 
 )
 
-with open("seguidores-broxada.txt", "r") as arquivo:
-    linhas = arquivo.readlines()
-    num = random.randint(0, 115)
-    n = 0
-    for linha in linhas: 
-        n+=1
-        if n==num:
-            break
-        nome = linha.strip()
+while True:
+    with open("seguidores-broxada.txt", "r") as arquivo:
+        linhas = arquivo.readlines()
+        num = random.randint(0, 115)
+        n = 0
+        for linha in linhas: 
+            n+=1
+            if n==num:
+                break
+            nome = linha.strip()
 
-print(nome)
-tweet_text = f'@{"magalzaoshow"}, Hora do Lanche!'
-tweet = api.create_tweet(text=tweet_text)
-print(tweet)
-"""try:
-    tweet_text = f'@{}, Hora do Lanche!'
-    tweet = api.create_tweet(tweet_text)
-    print(tweet)
-except:
-    pass
-"""
+    try:
+        print(nome)
+        tweet_text = f'@{nome}, Hora do Lanche!'
+        tweet = api.create_tweet(text=tweet_text)
+        print(tweet)
+    except:
+        pass
+
+    time.sleep(3600)
